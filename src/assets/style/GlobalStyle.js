@@ -27,6 +27,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-weight: 400;
+	font-size: 18px;
+	font-family: 'Lexend Deca', sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -48,6 +51,32 @@ table {
 }
 a {
 	text-decoration: none;
+}
+input {
+    width: 303px;
+    height: 45px;
+    border: 1px solid #D4D4D4;
+    padding: 0px 10px;
+    border-radius: 5px;
+    outline: none;
+	font-family: 'Lexend Deca', sans-serif;
+	font-size: 16px;
+    }
+    input::placeholder {
+    color: #D4D4D4;
+    font-size: 20px;
+    }
+button {
+	background-color: #52B6FF;
+	font-family: 'Lexend Deca', sans-serif;
+	color: #FFFFFF;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
 }
 `
 export default GlobalStyle;
