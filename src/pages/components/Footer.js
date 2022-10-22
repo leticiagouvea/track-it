@@ -1,16 +1,42 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import 'react-circular-progressbar/dist/styles.css';
+import { useContext } from "react";
+import userContext from "../../context/userContext";
 
 export default function Footer() {
+    const { todayHabits } = useContext(userContext);
+
+    function percentageHabits() {
+        const done = todayHabits.filter(value => value.done).length;
+        const total = todayHabits.length;
+
+        return ((done / total) * 100).toFixed(0);
+    }
+
     return (
         <FooterContainer>
             <Link to="/habitos">
                 <h1>Hábitos</h1>
             </Link>
 
-            <Link to="/hoje">
-                <div className="today-circle">Hoje</div>
-            </Link>
+            <div>
+                <Link to="/hoje">
+                <CircularProgressbar
+                        value={todayHabits.length === 0 ? ('0') : (percentageHabits())}
+                        text='Hoje'
+                        background
+                        backgroundPadding={6}
+                        styles={buildStyles({
+                        backgroundColor: "#52B6FF",
+                        textColor: "#fff",
+                        pathColor: "#fff",
+                        trailColor: "transparent"
+                        })}
+                />
+                </Link>
+            </div>
 
             <Link to="/historico">
                 <h1>Histórico</h1>
@@ -33,17 +59,10 @@ const FooterContainer = styled.div`
     color: #52B6FF;
     z-index: 2;
 
-    .today-circle {
+    div {
         width: 90px;
         height: 90px;
-        border-radius: 50px;
-        color: #FFFFFF;
-        background-color: #52B6FF;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-        margin-bottom: 50px;
+        margin-bottom: 10px;
         cursor: pointer;
     }
 

@@ -41,22 +41,22 @@ function deleteHabit(habitId) {
     return promise
 }
 
-function getHabitsToday() {
+function getTodayHabits() {
     const config = createHeaders()
     const promise = axios.get(`${BASE_URL}/habits/today`, config)
     return promise
 }
 
-function habitCheck(id) {
+function checkHabit(id) {
     const config = createHeaders()
     const promise = axios.post(`${BASE_URL}/habits/${id}/check`, {}, config)
     return promise
 }
 
-function habitUncheck(id) {
+function uncheckHabit(id) {
     const config = createHeaders()
     const promise = axios.post(`${BASE_URL}/habits/${id}/uncheck`, {}, config)
     return promise
 }
 
-export { postRegister, postLogin, postHabits, getHabits, deleteHabit, getHabitsToday, habitCheck, habitUncheck };
+export { postRegister, postLogin, postHabits, getHabits, deleteHabit, getTodayHabits, checkHabit, uncheckHabit };
