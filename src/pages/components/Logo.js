@@ -13,7 +13,7 @@ export default function Logo() {
 
 const LogoContainer = styled.div`
     width: 100%;
-    margin-top: 140px;
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,22 +1,58 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../components/Logo";
 
 export default function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
+
+    function entrar(e) {
+        e.preventDefault()
+
+        const body = {
+            email,
+            password
+        }
+
+        const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",  body) 
+
+        promise.then((res) => {
+            localStorage.setItem("image", JSON.stringify(res.data.image));
+            localStorage.setItem("token", JSON.stringify(res.data.token));
+            navigate("/hoje")
+            console.log(res.data.image)
+        })
+
+        promise.catch((err) => {
+            console.log(err.data)
+        })
+    }
+
     return (
         <LoginContainer>
             <Logo />
 
-            <form>
+            <form onSubmit={entrar}>
                 <input
                 placeholder="email"
-                type="text"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                required
                 />
 
                 <input
                 placeholder="senha"
                 type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                required
                 />
+
 
                 <div className="button-login">
                     <button>Entrar</button>
@@ -33,6 +69,7 @@ export default function Login() {
 const LoginContainer = styled.div`
     width: 100%;
     min-width: 375px;
+    padding-bottom: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,6 +98,5 @@ const LoginContainer = styled.div`
     font-size: 14px;
     color: #52B6FF;
     text-decoration: underline;
-    cursor: pointer;
     }
 `
