@@ -3,7 +3,6 @@ import styled from "styled-components";
 import TypographyWhite from "../../assets/img/TrackItWhite.png";
 
 export default function Header() {
-    console.log(JSON.parse(localStorage.getItem("image")))
 
     return (
         <HeaderContainer>
@@ -29,6 +28,7 @@ const HeaderContainer = styled.div`
     top: 0;
     left: 0;
     margin: 0 auto;
+    z-index: 2;
 
     .profile-pic {
     height: 50px;

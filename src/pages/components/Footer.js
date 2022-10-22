@@ -31,6 +31,7 @@ const FooterContainer = styled.div`
     align-items: center;
     padding: 0px 30px;
     color: #52B6FF;
+    z-index: 2;
 
     .today-circle {
         width: 90px;

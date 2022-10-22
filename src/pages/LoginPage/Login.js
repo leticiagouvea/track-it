@@ -10,7 +10,7 @@ export default function Login() {
 
     const navigate = useNavigate();
 
-    function entrar(e) {
+    function sendData(e) {
         e.preventDefault()
 
         const body = {
@@ -36,7 +36,7 @@ export default function Login() {
         <LoginContainer>
             <Logo />
 
-            <form onSubmit={entrar}>
+            <form onSubmit={sendData}>
                 <input
                 placeholder="email"
                 type="email"

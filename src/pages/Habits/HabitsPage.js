@@ -1,20 +1,42 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AddHabit from "./AddHabit";
+import { getHabits } from "../../service/trackItService";
+import Habit from "./Habit";
 
 export default function Habits() {
+    const [visibleHabit, setVisibleHabit] = useState(false);
+    const [listHabits, setLisHabits] = useState([]);
+
+    useEffect(() => {
+        getHabits()
+        .then((res) => {
+            setLisHabits(res.data)
+            console.log(res.data)
+        })
+        
+    }, [])
+
     return (
         <>
         <Header />
         <HabitsBody>
             <div className="add-habits">
                 <h1>Meus hábitos</h1>
-                <button>+</button>
+                <button onClick={() => setVisibleHabit(!visibleHabit)}>+</button>
             </div>
 
-            <AddHabit />
-            <h2>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</h2>
+            <AddHabit visibleHabit={visibleHabit} setVisibleHabit={setVisibleHabit} setLisHabits={setLisHabits} />
+
+            {listHabits.length ? (
+                listHabits.map(value => (
+                    <Habit name={value.name} days={value.days} id={value.id} setLisHabits={setLisHabits}/>
+                ))) : 
+            
+            (<h2>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</h2>)}
+
         </HabitsBody>
         <Footer />
         </>

@@ -35,7 +35,7 @@ function getHabits() {
     return promise
 }
 
-function deleteHabits(habitId) {
+function deleteHabit(habitId) {
     const config = createHeaders()
     const promise = axios.delete(`${BASE_URL}/habits/${habitId}`, config)
     return promise
@@ -59,4 +59,4 @@ function habitUncheck(id) {
     return promise
 }
 
-export { postRegister, postLogin, postHabits, getHabits, deleteHabits, getHabitsToday, habitCheck, habitUncheck };
+export { postRegister, postLogin, postHabits, getHabits, deleteHabit, getHabitsToday, habitCheck, habitUncheck };
