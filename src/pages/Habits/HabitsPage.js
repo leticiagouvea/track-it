@@ -14,7 +14,6 @@ export default function Habits() {
         getHabits()
         .then((res) => {
             setLisHabits(res.data)
-            console.log(res.data)
         })
     }, [])
 
@@ -35,7 +34,6 @@ export default function Habits() {
                 ))) : 
             
             (<h2>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</h2>)}
-
         </HabitsBody>
         <Footer />
         </>

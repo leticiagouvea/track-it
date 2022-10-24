@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { getHabits, postHabits } from "../../service/trackItService";
+import { ThreeDots } from 'react-loader-spinner';
 import styled from "styled-components";
 
 export default function AddHabit({visibleHabit, setVisibleHabit, setLisHabits}) {
     const [name, setName] = useState("");
     const [days, setDays] = useState([]);
-
-    console.log(days)
+    const [loading, setLoading] = useState(false);
 
     const weekdays = [
     {
@@ -55,68 +55,81 @@ export default function AddHabit({visibleHabit, setVisibleHabit, setLisHabits}) 
     const [daySelected, setDaySelected] = useState(weekdays);
 
     function createHabit(e) {
-        e.preventDefault()
+        e.preventDefault();
+        setLoading(true);
 
         const body = {
             name,
             days
         }
 
-        if (name === "" || days.length === 0) {
-            return alert("Preencha os campos para criar hábito")
+        if (name === "" || days.length === 0) {  
+            setTimeout(() => {
+                alert("Preencha os campos para criar hábito");
+                setLoading(false);
+            }, 500);        
+            return;
         }
 
         postHabits(body)
         .then((res) => {
             resetForm();
             setVisibleHabit(false);
+            setLoading(false);
             getHabits()
             .then((res) => setLisHabits(res.data))
         })
         .catch((err) => {
-            console.log(err.data)
+            alert("Erro ao salvar hábito. Tente novamente.");
+            setLoading(false);
         })
     }
 
     function selected(day) {
         if (days.includes(day.id)) {
             day.status = true;
-            const newDays = days.filter(value => value !== day.id) 
-            setDays(newDays)
+            const newDays = days.filter(value => value !== day.id); 
+            setDays(newDays);
         } else {
             day.status = false;
-            setDays([...days, day.id])
+            setDays([...days, day.id]);
         }
     }
 
     function resetForm() {
         setName("");
         setDays("");
+        setDaySelected(weekdays);
     }
 
     return (
         <HabitContainer visibleHabit={visibleHabit} >
+            <div className="infos-habit">
                 <input
                     placeholder="nome do hábito"
                     type="text"
                     onChange={(e) => setName(e.target.value)}
                     value={name}
                     required
+                    disabled={loading}
                 />
 
                 <div className="weekdays">
                 {daySelected.map((value, index) => (
-                    <Day key={index} status={value.status} onClick={
-                        () => selected(value)
-                    }> {value.day}
-                    </Day>   
+                    <Day key={index} status={value.status} disabled={loading}
+                    onClick={() => selected(value)}> {value.day}</Day>
                 ))}
                 </div>
-                
-                <div className="buttons">
-                    <button className="cancel" onClick={() => setVisibleHabit(false)}>Cancelar</button>
-                    <button className="save" onClick={createHabit}>Salvar</button>
-                </div>
+            </div>
+
+            <div className="buttons">
+                <button className="cancel" onClick={() => setVisibleHabit(false)}>Cancelar</button>
+                <button className="save" onClick={createHabit}>
+                    {loading ?
+                        (<ThreeDots color="#ffffff" height={50} width={50} />) :
+                        ("Salvar")}
+                </button>
+            </div>
         </HabitContainer>
     )
 }
@@ -124,13 +137,13 @@ export default function AddHabit({visibleHabit, setVisibleHabit, setLisHabits}) 
 const HabitContainer = styled.div`
     width: 90vw;
     height: 180px;
-    margin: 30px auto;
+    margin: 0px auto;
     background-color: #FFFFFF;
     border-radius: 5px;
     display: ${props => props.visibleHabit ? ("flex") :  ("none")};
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    padding-top: 30px;
 
     input {
         width: 86vw;
@@ -138,12 +151,14 @@ const HabitContainer = styled.div`
 
     .weekdays {
         display: flex;
-        margin: 10px 0px 15px 0px;
+        margin: 10px 0px 25px 0px;
     }
 
     .buttons {
         display: flex;
-        justify-content: right;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
 
         .cancel {
         background-color: #FFFFFF;
@@ -161,12 +176,16 @@ const HabitContainer = styled.div`
         }
     }
 
-    @media (max-width: 375px) {
-        width: 90vw;
+    @media (max-width:375px) {
+        width: 330px;
+
+        input {
+            width: 310px;
+        }
     }
 `
 
-const Day = styled.div`
+const Day = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;

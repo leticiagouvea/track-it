@@ -15,7 +15,7 @@ export default function TodayHabitContainer({ id, name, done, currentSequence, h
             setCurrent(current + 1);
             
             if (current === highest) {
-                setHighest(highest + 1)
+                setHighest(highest + 1);
             }
 
         } else {

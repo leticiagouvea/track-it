@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import LogoIcon from "../../assets/img/logo.png"
-import Typography from "../../assets/img/TrackIt.png"
+import LogoIcon from "../../assets/img/logo.png";
+import Typography from "../../assets/img/TrackIt.png";
 
 export default function Logo() {
     return (

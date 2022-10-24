@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { postRegister } from "../../service/trackItService";
+import { ThreeDots } from 'react-loader-spinner';
 import styled from "styled-components";
 import Logo from "../components/Logo";
-import { postRegister } from "../../service/trackItService";
 
 export default function Registration() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [image, setImage] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     function EnviarInfos(e) {
-        e.preventDefault()
+        e.preventDefault();
+        setLoading(true);
 
         const body = {
             email,
@@ -24,11 +27,12 @@ export default function Registration() {
     
         postRegister(body)
         .then((res) => {
-            console.log(res.data)
-            navigate("/")
+            navigate("/");
+            setLoading(false);
         })
         .catch((res) => {
-            alert(`Algo deu errado. ${res.response.status - res.response.data}`)
+            alert(`Algo deu errado. ${res.response.status - res.response.data}`);
+            setLoading(false);
         })
     }
 
@@ -44,6 +48,7 @@ export default function Registration() {
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
                         required
+                        disabled={loading}
                     />
                 </div>
 
@@ -54,6 +59,7 @@ export default function Registration() {
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                         required
+                        disabled={loading}
                     />
                 </div>
 
@@ -64,6 +70,7 @@ export default function Registration() {
                         onChange={(e) => setName(e.target.value)}
                         value={name}
                         required
+                        disabled={loading}
                     />
                 </div>
 
@@ -74,14 +81,17 @@ export default function Registration() {
                         onChange={(e) => setImage(e.target.value)}
                         value={image}
                         required
+                        disabled={loading}
                     />
                 </div>
 
-                
                 <div className="button-login">
-                    <button type="submit">Cadastrar</button>
+                    <button type="submit" disabled={loading}>
+                        {loading ?
+                            (<ThreeDots color="#ffffff" height={50} width={50} />) :
+                            ("Cadastrar")}
+                    </button>
                 </div>
-               
             </form>
 
             <Link to="/">

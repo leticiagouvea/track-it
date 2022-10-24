@@ -9,13 +9,13 @@ import Footer from "../components/Footer";
 import userContext from "../../context/userContext";
 
 export default function Today() {
-    const date = dayjs().locale("pt-br").format("dddd, DD/MM")
+    const date = dayjs().locale("pt-br").format("dddd, DD/MM");
     const { todayHabits, setTodayHabits } = useContext(userContext);
 
     useEffect(() => {
         getTodayHabits()
         .then((res) => {setTodayHabits(res.data)})
-    }, [todayHabits])
+    }, [todayHabits]);
 
     function percentageHabits() {
         const done = todayHabits.filter(value => value.done).length;

@@ -1,34 +1,39 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ThreeDots } from 'react-loader-spinner';
 import styled from "styled-components";
 import Logo from "../components/Logo";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     function sendData(e) {
         e.preventDefault();
+        setLoading(true);
 
         const body = {
             email,
             password
         }
 
-        const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",  body) 
+        const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body);
 
         promise.then((res) => {
             localStorage.setItem("image", JSON.stringify(res.data.image));
             localStorage.setItem("token", JSON.stringify(res.data.token));
             navigate("/hoje");
+            setLoading(false);
         })
 
         promise.catch((err) => {
             alert("Dados incorretos. Tente novamente.");
             resetForm();
+            setLoading(false);
         })
 
         function resetForm() {
@@ -43,31 +48,36 @@ export default function Login() {
 
             <form onSubmit={sendData}>
                 <input
-                placeholder="email"
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                required
+                    placeholder="email"
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    required
+                    disabled={loading}
                 />
 
                 <input
-                placeholder="senha"
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                required
+                    placeholder="senha"
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    required
+                    disabled={loading}
                 />
 
-
                 <div className="button-login">
-                    <button>Entrar</button>
+                    <button disabled={loading}>
+                        {loading ?
+                            (<ThreeDots color="#ffffff" height={50} width={50} />) :
+                            ("Entrar")}
+                    </button>
                 </div>
             </form>
 
             <Link to="/cadastro">
                 <h1>Não tem uma conta? Cadastre-se!</h1>
             </Link>
-        </LoginContainer >
+        </LoginContainer>
     )
 }
 

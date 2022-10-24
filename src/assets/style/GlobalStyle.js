@@ -30,6 +30,7 @@ body {
 	font-weight: 400;
 	font-size: 18px;
 	font-family: 'Lexend Deca', sans-serif;
+	color: #666666;
 }
 ol, ul {
 	list-style: none;
