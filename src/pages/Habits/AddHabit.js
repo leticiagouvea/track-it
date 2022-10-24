@@ -105,7 +105,7 @@ export default function AddHabit({visibleHabit, setVisibleHabit, setLisHabits}) 
     return (
         <HabitContainer visibleHabit={visibleHabit} >
             <div className="infos-habit">
-                <input
+                <input data-identifier="input-habit-name"
                     placeholder="nome do hábito"
                     type="text"
                     onChange={(e) => setName(e.target.value)}
@@ -116,15 +116,15 @@ export default function AddHabit({visibleHabit, setVisibleHabit, setLisHabits}) 
 
                 <div className="weekdays">
                 {daySelected.map((value, index) => (
-                    <Day key={index} status={value.status} disabled={loading}
+                    <Day data-identifier="week-day-btn" key={index} status={value.status} disabled={loading}
                     onClick={() => selected(value)}> {value.day}</Day>
                 ))}
                 </div>
             </div>
 
             <div className="buttons">
-                <button className="cancel" onClick={() => setVisibleHabit(false)}>Cancelar</button>
-                <button className="save" onClick={createHabit}>
+                <button data-identifier="cancel-habit-create-btn" className="cancel" onClick={() => setVisibleHabit(false)}>Cancelar</button>
+                <button data-identifier="save-habit-create-btn" className="save" onClick={createHabit}>
                     {loading ?
                         (<ThreeDots color="#ffffff" height={50} width={50} />) :
                         ("Salvar")}
@@ -181,6 +181,10 @@ const HabitContainer = styled.div`
 
         input {
             width: 310px;
+        }
+
+        .buttons {
+            right: 10px;
         }
     }
 `

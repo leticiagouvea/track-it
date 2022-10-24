@@ -47,7 +47,7 @@ export default function Login() {
             <Logo />
 
             <form onSubmit={sendData}>
-                <input
+                <input data-identifier="input-email"
                     placeholder="email"
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -56,7 +56,7 @@ export default function Login() {
                     disabled={loading}
                 />
 
-                <input
+                <input data-identifier="input-password"
                     placeholder="senha"
                     type="password"
                     onChange={(e) => setPassword(e.target.value)}
@@ -66,7 +66,7 @@ export default function Login() {
                 />
 
                 <div className="button-login">
-                    <button disabled={loading}>
+                    <button disabled={loading} data-identifier="login-btn">
                         {loading ?
                             (<ThreeDots color="#ffffff" height={50} width={50} />) :
                             ("Entrar")}
@@ -75,7 +75,7 @@ export default function Login() {
             </form>
 
             <Link to="/cadastro">
-                <h1>Não tem uma conta? Cadastre-se!</h1>
+                <h1 data-identifier="sign-up-action">Não tem uma conta? Cadastre-se!</h1>
             </Link>
         </LoginContainer>
     )

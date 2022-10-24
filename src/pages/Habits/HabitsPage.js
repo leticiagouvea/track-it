@@ -23,7 +23,7 @@ export default function Habits() {
         <HabitsBody>
             <div className="add-habits">
                 <h1>Meus hábitos</h1>
-                <button onClick={() => setVisibleHabit(!visibleHabit)}>+</button>
+                <button data-identifier="create-habit-btn" onClick={() => setVisibleHabit(!visibleHabit)}>+</button>
             </div>
 
             <AddHabit visibleHabit={visibleHabit} setVisibleHabit={setVisibleHabit} setLisHabits={setLisHabits} />
@@ -33,7 +33,7 @@ export default function Habits() {
                     <Habit name={value.name} days={value.days} id={value.id} setLisHabits={setLisHabits}/>
                 ))) : 
             
-            (<h2>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</h2>)}
+            (<h2 data-identifier="no-habit-message">Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</h2>)}
         </HabitsBody>
         <Footer />
         </>

@@ -15,7 +15,7 @@ export default function Today() {
     useEffect(() => {
         getTodayHabits()
         .then((res) => {setTodayHabits(res.data)})
-    }, [todayHabits]);
+    }, [todayHabits, setTodayHabits]);
 
     function percentageHabits() {
         const done = todayHabits.filter(value => value.done).length;
@@ -28,9 +28,9 @@ export default function Today() {
         <>
         <Header />
         <ListHabits>
-            <h1 className="date">{date[0].toUpperCase() + date.substring(1)}</h1>
+            <h1 data-identifier="today-infos" className="date">{date[0].toUpperCase() + date.substring(1)}</h1>
 
-            <TextProgress done={todayHabits.filter(value => value.done).length > 0}>
+            <TextProgress data-identifier="today-infos" done={todayHabits.filter(value => value.done).length > 0}>
                 {todayHabits.filter(value => value.done).length > 0 ? (<h2>{percentageHabits()}% dos hábitos concluídos</h2>) : (<h2>Nenhum hábito concluído ainda</h2>)}
             </TextProgress>
 

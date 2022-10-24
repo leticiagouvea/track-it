@@ -18,7 +18,7 @@ export default function Footer() {
     return (
         <FooterContainer>
             <Link to="/habitos">
-                <h1>Hábitos</h1>
+                <h1 data-identifier="habit-page-action">Hábitos</h1>
             </Link>
 
             <div>
@@ -39,7 +39,7 @@ export default function Footer() {
             </div>
 
             <Link to="/historico">
-                <h1>Histórico</h1>
+                <h1 data-identifier="historic-page-action">Histórico</h1>
             </Link>
         </FooterContainer>
     )
@@ -54,9 +54,8 @@ const FooterContainer = styled.div`
     bottom: 0;
     left: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 0px 20px;
     color: #52B6FF;
     z-index: 2;
 

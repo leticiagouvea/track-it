@@ -18,7 +18,7 @@ export default function Habit({ name, days, id, setLisHabits }) {
 
     return (
         <HabitContainer>
-            <p>{name}</p>
+            <p data-identifier="habit-name">{name}</p>
             <div>
                 {weekdays.map((value, index) => (
                     <Day key={index} status={days.indexOf(index) === -1}>
@@ -27,7 +27,7 @@ export default function Habit({ name, days, id, setLisHabits }) {
                 ))}
             </div>
 
-                <IoTrashOutline className="trash-icon" onClick={eraseHabit}/>
+                <IoTrashOutline data-identifier="delete-habit-btn" className="trash-icon" onClick={eraseHabit}/>
         </HabitContainer>
     )
 }

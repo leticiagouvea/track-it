@@ -42,7 +42,7 @@ export default function Registration() {
 
             <form onSubmit={EnviarInfos}>
                 <div className="input-signup">
-                    <input
+                    <input data-identifier="input-email"
                         placeholder="email"
                         type="email"
                         onChange={(e) => setEmail(e.target.value)}
@@ -53,7 +53,7 @@ export default function Registration() {
                 </div>
 
                 <div className="input-signup">
-                    <input
+                    <input data-identifier="input-password"
                         placeholder="senha"
                         type="password"
                         onChange={(e) => setPassword(e.target.value)}
@@ -64,7 +64,7 @@ export default function Registration() {
                 </div>
 
                 <div className="input-signup">
-                    <input
+                    <input data-identifier="input-name"
                         placeholder="nome"
                         type="text"
                         onChange={(e) => setName(e.target.value)}
@@ -75,7 +75,7 @@ export default function Registration() {
                 </div>
 
                 <div className="input-signup">
-                    <input
+                    <input data-identifier="input-photo"
                         placeholder="URL foto"
                         type="url"
                         onChange={(e) => setImage(e.target.value)}
@@ -95,7 +95,7 @@ export default function Registration() {
             </form>
 
             <Link to="/">
-                <h1>Já tem uma conta? Faça login!</h1>
+                <h1 data-identifier="back-to-login-action">Já tem uma conta? Faça login!</h1>
             </Link>
         </RegisterContainer>
     )

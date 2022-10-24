@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <HeaderContainer>
             <img src={TypographyWhite} alt="Track It" />
-            <img className="profile-pic" src={JSON.parse(localStorage.getItem("image"))} alt="Profile" />
+            <img data-identifier="avatar" className="profile-pic" src={JSON.parse(localStorage.getItem("image"))} alt="Profile" />
         </HeaderContainer>
     )
 }
@@ -15,7 +15,7 @@ const HeaderContainer = styled.div`
     width: 100%;
     min-width: 375px;
     height: 72px;
-    padding: 0px 20px;
+    padding: 0px 30px;
     background-color: #126BA5;
     box-shadow: 0px 4px 4px 0px #00000026;
     display: flex;

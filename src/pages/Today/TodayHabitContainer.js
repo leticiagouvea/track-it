@@ -27,24 +27,24 @@ export default function TodayHabitContainer({ id, name, done, currentSequence, h
     }
 
     return (
-        <HabitContainer check={check}>
+        <HabitContainer data-identifier="today-infos" check={check}>
             <div className="habit-infos">
                 <h3>{name}</h3>
 
                 <div className="current-sequence">
                     <span>Sequência atual: </span>
-                    <p>{current} {current <= 1 ? "dia" : "dias"}</p>
+                    <p>{current} {current <= 1 ? ("dia") : ("dias")}</p>
                 </div>
 
                 <div className="current-sequence">
                     <span>Seu recorde: </span>
-                    <Record check={current === highest !== 0 ? true : false}>
-                        <p>{highest} {highest <= 1 ? "dia" : "dias"}</p>
+                    <Record check={current === highest !== 0 ? (true) : (false)}>
+                        <p>{highest} {highest <= 1 ? ("dia") : ("dias")}</p>
                     </Record>
                 </div>
             </div>
 
-            <ButtonCheck check={check} onClick={doneHabit}>
+            <ButtonCheck data-identifier="done-habit-btn" check={check} onClick={doneHabit}>
                 <img src={Check} alt="check" />
             </ButtonCheck>
         </HabitContainer>
