@@ -11,7 +11,7 @@ export default function Login() {
     const navigate = useNavigate();
 
     function sendData(e) {
-        e.preventDefault()
+        e.preventDefault();
 
         const body = {
             email,
@@ -23,13 +23,18 @@ export default function Login() {
         promise.then((res) => {
             localStorage.setItem("image", JSON.stringify(res.data.image));
             localStorage.setItem("token", JSON.stringify(res.data.token));
-            navigate("/hoje")
-            console.log(res.data.image)
+            navigate("/hoje");
         })
 
         promise.catch((err) => {
-            console.log(err.data)
+            alert("Dados incorretos. Tente novamente.");
+            resetForm();
         })
+
+        function resetForm() {
+            setEmail("");
+            setPassword("");
+        }
     }
 
     return (

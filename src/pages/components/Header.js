@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import TypographyWhite from "../../assets/img/TrackItWhite.png";
 
@@ -6,9 +5,7 @@ export default function Header() {
 
     return (
         <HeaderContainer>
-            <Link to="/">
-                <img src={TypographyWhite} alt="Track It" />
-            </Link>
+            <img src={TypographyWhite} alt="Track It" />
             <img className="profile-pic" src={JSON.parse(localStorage.getItem("image"))} alt="Profile" />
         </HeaderContainer>
     )
@@ -35,9 +32,5 @@ const HeaderContainer = styled.div`
     width: 50px;
     border-radius: 50px;
     object-fit: cover;
-    }
-
-    @media (max-width: 375px) {
-        width: 100vw;
     }
 `

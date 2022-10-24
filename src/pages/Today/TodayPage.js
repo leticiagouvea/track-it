@@ -26,8 +26,8 @@ export default function Today() {
 
     return (
         <>
+        <Header />
         <ListHabits>
-            <Header />
             <h1 className="date">{date[0].toUpperCase() + date.substring(1)}</h1>
 
             <TextProgress done={todayHabits.filter(value => value.done).length > 0}>
@@ -44,9 +44,9 @@ export default function Today() {
 }
 
 const ListHabits = styled.div`
+    min-width: 375px;
     min-height: 700px;
     padding-bottom: 200px;
-    min-width: 375px;
     background-color: #E5E5E5;
     margin-top: 72px;
     display: flex;
@@ -66,7 +66,7 @@ const TextProgress = styled.div`
     h2 {
         font-size: 17px;
         color: ${props => props.done ? ("#8FC549") : ("#BABABA")};
-        margin-bottom: 14px;
+        margin-bottom: 25px;
         text-align: left;
     }
 `

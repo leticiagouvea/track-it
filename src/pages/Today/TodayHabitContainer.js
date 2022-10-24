@@ -32,13 +32,15 @@ export default function TodayHabitContainer({ id, name, done, currentSequence, h
                 <h3>{name}</h3>
 
                 <div className="current-sequence">
-                    <span>Sequência atual:</span>
+                    <span>Sequência atual: </span>
                     <p>{current} {current <= 1 ? "dia" : "dias"}</p>
                 </div>
 
                 <div className="current-sequence">
-                    <Record check={current === highest !== 0 ? true : false}
-                    >Seu recorde: {highest} {highest <= 1 ? "dia" : "dias"} </Record>
+                    <span>Seu recorde: </span>
+                    <Record check={current === highest !== 0 ? true : false}>
+                        <p>{highest} {highest <= 1 ? "dia" : "dias"}</p>
+                    </Record>
                 </div>
             </div>
 
@@ -50,13 +52,15 @@ export default function TodayHabitContainer({ id, name, done, currentSequence, h
 }
 
 const HabitContainer = styled.div`
-    width: 340px;
+    width: 90vw;
     height: 94px;
     border-radius: 5px;
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0px 20px;
+    margin-bottom: 20px;
     
     h3 {
         font-size: 19px;
@@ -65,17 +69,22 @@ const HabitContainer = styled.div`
 
     p {
         font-size: 12px;
-        line-height: 1.1;
+        line-height: 1.5;
         color: ${props => props.check ? ("#8FC549") : ("#666666")}
     }
 
     span {
         font-size: 12px;
-        line-height: 1.1;
+        line-height: 1.5;
+        margin-right: 5px;
     }
 
     .current-sequence {
         display: flex;
+    }
+
+    @media (max-width:375px) {
+        width: 330px;
     }
 `
 
@@ -97,4 +106,5 @@ const ButtonCheck = styled.div`
     font-size: 36px;
     color: #FFFFFF;
     font-weight: 900;
+    cursor: pointer;
 `

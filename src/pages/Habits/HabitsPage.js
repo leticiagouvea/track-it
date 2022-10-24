@@ -16,7 +16,6 @@ export default function Habits() {
             setLisHabits(res.data)
             console.log(res.data)
         })
-        
     }, [])
 
     return (
@@ -45,8 +44,8 @@ export default function Habits() {
 
 const HabitsBody = styled.body`
     margin-top: 72px;
-    width: 100%;
     min-height: 700px;
+    min-width: 375px;
     padding-bottom: 200px;
     min-width: 375px;
     background-color: #E5E5E5;
@@ -57,8 +56,8 @@ const HabitsBody = styled.body`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 40px 0px 0px 0px;
-        margin-bottom: 15px;
+        padding-top: 40px;
+        margin-bottom: 30px;
         height: 50px;
 
         h1 {
@@ -79,9 +78,12 @@ const HabitsBody = styled.body`
         margin: 0 auto;
         color: #666666;
         text-align: left;
+        line-height: 1.4;
     }
 
-    @media (max-width: 375px) {
-        width: 100vw;
+    @media (max-width:375px) {
+        h2, .add-habits {
+            width: 330px;
+        }
     }
 `

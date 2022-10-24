@@ -4,26 +4,27 @@ import Footer from "../components/Footer";
 
 export default function Historic() {
     return (
+        <>
+        <Header />
         <HistoricContainer>
-            <Header />
                 <h4>Histórico</h4>
                 <h5>Em breve você poderá ver o histórico dos seus hábitos aqui!</h5>
-            <Footer />
         </HistoricContainer>
+        <Footer />
+        </>
     )
 }
 
 const HistoricContainer = styled.div`
     margin-top: 72px;
-    width: 100%;
     min-height: 700px;
-    padding-bottom: 200px;
     min-width: 375px;
+    padding-bottom: 200px;
     background-color: #E5E5E5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0px 30px;
+    text-align: center;
     
     h4 {    
         font-size: 23px;
@@ -37,6 +38,12 @@ const HistoricContainer = styled.div`
         font-size: 17px;
         color: #666666;
         margin-bottom: 14px;
-        text-align: left;
+        line-height: 1.4;
+    }
+
+    @media (max-width:375px) {
+        h4, h5 {
+        width: 330px;
+        }
     }
 `

@@ -46,7 +46,8 @@ export default function Footer() {
 }
 
 const FooterContainer = styled.div`
-    width: 100%;
+    width: 100vw;
+    min-width: 375px;
     height: 70px;
     background-color: #FFFFFF;
     position: fixed;
@@ -55,22 +56,18 @@ const FooterContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 30px;
+    padding: 0px 20px;
     color: #52B6FF;
     z-index: 2;
 
     div {
         width: 90px;
         height: 90px;
-        margin-bottom: 10px;
+        margin-bottom: 50px;
         cursor: pointer;
     }
 
     h1 {
         cursor: pointer;
-    }
-
-    @media (max-width: 375px) {
-        width: 100vw;
     }
 `

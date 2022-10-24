@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { deleteHabit, getHabits } from "../../service/trackItService";
+import { IoTrashOutline } from "react-icons/io5";
 
 export default function Habit({ name, days, id, setLisHabits }) {
     const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
@@ -25,9 +26,8 @@ export default function Habit({ name, days, id, setLisHabits }) {
                     </Day>
                 ))}
             </div>
-            <div className="trash" onClick={eraseHabit}>
 
-            </div>
+                <IoTrashOutline className="trash-icon" onClick={eraseHabit}/>
         </HabitContainer>
     )
 }
@@ -35,7 +35,7 @@ export default function Habit({ name, days, id, setLisHabits }) {
 const HabitContainer = styled.div`
     width: 90vw;
     height: 90px;
-    margin: 30px auto;
+    margin: 20px auto;
     background-color: #FFFFFF;
     border-radius: 5px;
     display: flex;
@@ -53,13 +53,17 @@ const HabitContainer = styled.div`
         display: flex;
     }
 
-    .trash {
+    .trash-icon {
         width: 20px;
         height: 20px;
-        background-color: blue;
         position: absolute;
         right: 20px;
         top: 20px;
+        cursor: pointer;
+    }
+
+    @media (max-width:375px) {
+        width: 330px;
     }
 `
 
