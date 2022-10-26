@@ -61,7 +61,6 @@ input {
     border: 1px solid #D4D4D4;
     padding: 0px 10px;
     border-radius: 5px;
-    outline: none;
 	font-family: 'Lexend Deca', sans-serif;
 	font-size: 16px;
     }
@@ -69,6 +68,9 @@ input {
     color: #D4D4D4;
     font-size: 20px;
     }
+	input:focus {
+      outline-color: #52B6FF;
+   }
 button {
 	background-color: #52B6FF;
 	font-family: 'Lexend Deca', sans-serif;

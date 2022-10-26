@@ -18,7 +18,6 @@ export default function Historic() {
 const HistoricContainer = styled.div`
     margin-top: 72px;
     min-height: 700px;
-    min-width: 375px;
     padding-bottom: 200px;
     background-color: #E5E5E5;
     display: flex;
@@ -29,21 +28,15 @@ const HistoricContainer = styled.div`
     h4 {    
         font-size: 23px;
         color: #126BA5;
-        padding-top: 30px;
+        padding-top: 40px;
         margin-bottom: 15px;
     }
 
     h5 {
-        width: 375px;
+        padding: 0px 30px;
         font-size: 17px;
         color: #666666;
         margin-bottom: 14px;
         line-height: 1.4;
-    }
-
-    @media (max-width:375px) {
-        h4, h5 {
-        width: 330px;
-        }
     }
 `

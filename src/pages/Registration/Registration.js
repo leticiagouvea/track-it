@@ -119,12 +119,16 @@ const RegisterContainer = styled.div`
     min-width: 375px;
 
         input {
-        margin-bottom: 5px;
+            margin-bottom: 5px;
         }
 
         button {
-        width: 303px;
-        height: 45px;
+            width: 303px;
+            height: 45px;
+            &:disabled {
+            opacity: 0.7;
+            cursor: default;
+            }
         }
     }
 

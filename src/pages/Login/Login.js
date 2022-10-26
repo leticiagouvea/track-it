@@ -105,6 +105,10 @@ const LoginContainer = styled.div`
         button {
             width: 303px;
             height: 45px;
+            &:disabled {
+            opacity: 0.7;
+            cursor: default;
+            }
         }
     }
 

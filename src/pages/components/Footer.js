@@ -32,7 +32,7 @@ export default function Footer() {
                         backgroundColor: "#52B6FF",
                         textColor: "#fff",
                         pathColor: "#fff",
-                        trailColor: "transparent"
+                        trailColor: "transparent",
                         })}
                 />
                 </Link>
@@ -47,14 +47,13 @@ export default function Footer() {
 
 const FooterContainer = styled.div`
     width: 100vw;
-    min-width: 375px;
     height: 70px;
     background-color: #FFFFFF;
     position: fixed;
     bottom: 0;
     left: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     color: #52B6FF;
     z-index: 2;
@@ -68,5 +67,8 @@ const FooterContainer = styled.div`
 
     h1 {
         cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
     }
 `

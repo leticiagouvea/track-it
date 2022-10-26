@@ -12,10 +12,9 @@ export default function Header() {
 }
 
 const HeaderContainer = styled.div`
-    width: 100%;
-    min-width: 375px;
+    width: 100vw;
     height: 72px;
-    padding: 0px 30px;
+    padding: 0px 20px;
     background-color: #126BA5;
     box-shadow: 0px 4px 4px 0px #00000026;
     display: flex;
@@ -24,13 +23,12 @@ const HeaderContainer = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    margin: 0 auto;
     z-index: 2;
 
     .profile-pic {
     height: 50px;
     width: 50px;
-    border-radius: 50px;
+    border-radius: 50%;
     object-fit: cover;
     }
 `

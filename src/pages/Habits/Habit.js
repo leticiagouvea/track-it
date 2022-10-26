@@ -27,14 +27,15 @@ export default function Habit({ name, days, id, setLisHabits }) {
                 ))}
             </div>
 
-                <IoTrashOutline data-identifier="delete-habit-btn" className="trash-icon" onClick={eraseHabit}/>
+            <IoTrashOutline data-identifier="delete-habit-btn" className="trash-icon" onClick={eraseHabit}/>
         </HabitContainer>
     )
 }
 
 const HabitContainer = styled.div`
     width: 90vw;
-    height: 90px;
+    min-height: 90px;
+    padding: 18px 20px;
     margin: 20px auto;
     background-color: #FFFFFF;
     border-radius: 5px;
@@ -42,11 +43,14 @@ const HabitContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding-left: 20px;
     position: relative;
+    line-height: 1.3;
+    overflow: hidden;
 
     p {
-        margin-bottom: 8px;
+        max-width: 90vw;
+        padding-right: 50px;
+        margin-bottom: 12px;
     }
 
     div {
@@ -60,10 +64,6 @@ const HabitContainer = styled.div`
         right: 20px;
         top: 20px;
         cursor: pointer;
-    }
-
-    @media (max-width:375px) {
-        width: 330px;
     }
 `
 

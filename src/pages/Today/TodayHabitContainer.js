@@ -38,7 +38,7 @@ export default function TodayHabitContainer({ id, name, done, currentSequence, h
 
                 <div className="current-sequence">
                     <span>Seu recorde: </span>
-                    <Record check={current === highest !== 0 ? (true) : (false)}>
+                    <Record check={(current === highest) !== 0 ? (true) : (false)}>
                         <p>{highest} {highest <= 1 ? ("dia") : ("dias")}</p>
                     </Record>
                 </div>
@@ -53,17 +53,20 @@ export default function TodayHabitContainer({ id, name, done, currentSequence, h
 
 const HabitContainer = styled.div`
     width: 90vw;
-    height: 94px;
+    min-height: 94px;
     border-radius: 5px;
     background-color: #FFFFFF;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0px 20px;
+    padding: 20px;
     margin-bottom: 20px;
+    line-height: 1.3;
+    position: relative;
+    overflow: hidden;
     
     h3 {
-        font-size: 19px;
+        width: 80vw;
+        padding-right: 50px;
         margin-bottom: 10px;
     }
 
@@ -83,18 +86,22 @@ const HabitContainer = styled.div`
         display: flex;
     }
 
-    @media (max-width:375px) {
-        width: 330px;
+    @media (max-width:700px) {
+        h3 {
+            width: 60vw;
+            padding-right: 40px;
+        }
     }
 `
 
 const Record = styled.p`
     font-size: 12px;
-    line-height: 1.1;
     color: ${props => props.check ? ("#8FC549") : ("#666666")};
 `
 
 const ButtonCheck = styled.div`
+    position: absolute;
+    right: 20px;
     width: 70px;
     height: 70px;
     background-color: ${props => props.check ? ("#8FC549") : ("#EBEBEB")};
@@ -103,8 +110,6 @@ const ButtonCheck = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 36px;
-    color: #FFFFFF;
-    font-weight: 900;
     cursor: pointer;
+    transition-duration: 0.5s;
 `

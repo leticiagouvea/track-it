@@ -124,7 +124,8 @@ export default function AddHabit({visibleHabit, setVisibleHabit, setLisHabits}) 
 
             <div className="buttons">
                 <button data-identifier="cancel-habit-create-btn" className="cancel" onClick={() => setVisibleHabit(false)}>Cancelar</button>
-                <button data-identifier="save-habit-create-btn" className="save" onClick={createHabit}>
+                <button data-identifier="save-habit-create-btn" className="save"
+                onClick={createHabit} disabled={loading}>
                     {loading ?
                         (<ThreeDots color="#ffffff" height={50} width={50} />) :
                         ("Salvar")}
@@ -143,7 +144,7 @@ const HabitContainer = styled.div`
     display: ${props => props.visibleHabit ? ("flex") :  ("none")};
     justify-content: space-evenly;
     position: relative;
-    padding-top: 30px;
+    padding-top: 25px;
 
     input {
         width: 86vw;
@@ -173,18 +174,23 @@ const HabitContainer = styled.div`
         font-size: 15px;
         width: 84px;
         height: 35px;
+            &:disabled {
+            opacity: 0.7;
+            cursor: default;
+            }
         }
     }
 
-    @media (max-width:375px) {
-        width: 330px;
+    @media (max-width:500px) {
+        padding-top: 20px;
 
         input {
-            width: 310px;
+            width: 80vw;
         }
 
         .buttons {
-            right: 10px;
+            right: 15px;
+            bottom: 15px;
         }
     }
 `
@@ -200,4 +206,5 @@ const Day = styled.button`
     background-color: ${props => props.status ? ("#FFFFFF") : ("#D4D4D4")};
     border: 1px solid #D4D4D4;
     color: ${props => props.status ? ("#D4D4D4") : ("#FFFFFF")};
+    transition-duration: 0.5s;
 `

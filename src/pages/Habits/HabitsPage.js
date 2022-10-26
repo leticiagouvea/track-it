@@ -43,9 +43,7 @@ export default function Habits() {
 const HabitsBody = styled.body`
     margin-top: 72px;
     min-height: 700px;
-    min-width: 375px;
     padding-bottom: 200px;
-    min-width: 375px;
     background-color: #E5E5E5;
 
     .add-habits {
@@ -73,15 +71,8 @@ const HabitsBody = styled.body`
 
     h2 {
         width: 90vw;
-        margin: 0 auto;
-        color: #666666;
+        margin: 15px auto;
         text-align: left;
         line-height: 1.4;
-    }
-
-    @media (max-width:375px) {
-        h2, .add-habits {
-            width: 330px;
-        }
     }
 `

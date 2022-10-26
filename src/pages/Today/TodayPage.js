@@ -44,7 +44,6 @@ export default function Today() {
 }
 
 const ListHabits = styled.div`
-    min-width: 375px;
     min-height: 700px;
     padding-bottom: 200px;
     background-color: #E5E5E5;
@@ -52,13 +51,12 @@ const ListHabits = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #666666;
 
     .date {
         font-size: 22px;
         color: #126BA5;
-        margin-bottom: 8px;
-        padding-top: 30px;
+        margin-bottom: 10px;
+        padding-top: 40px;
     }
 `
 
